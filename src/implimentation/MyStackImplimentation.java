@@ -6,28 +6,28 @@ import myinterface.MyStackADT;
 
 public class MyStackImplimentation implements MyStackADT {
 
-    private Node head;
+    private Node top;
     private int size;
 
     public MyStackImplimentation() {
-        head=null;
+        top=null;
         size=0;
     }
 
     @Override
     public boolean isEmpty() {
-        return head==null;
+        return top==null;
     }
     //similar to addFirst method in Linked List
     @Override
     public void push(int element) {
         Node node=new Node(element);
         if(isEmpty()){
-            head=node;
+            top=node;
         }
         else{
-            node.setNext(head);
-            head=node;
+            node.setNext(top);
+            top=node;
         }
         size++;
     }
@@ -39,20 +39,30 @@ public class MyStackImplimentation implements MyStackADT {
     public int pop() {
         int response=0; //considering 0 as invalid data;
         if(!isEmpty()){
-            response=head.getData();
-            head=head.getNext();
+            response=top.getData();
+            top=top.getNext();
             size--;
+        }
+        else{
+            System.out.println("stack underflow");
         }
         return response;
     }
 
     @Override
     public int peek() {
-        return head.getData();
+        int response=0;  //considering 0 as invalid data
+        if(!isEmpty()){
+            response=top.getData();
+        }
+        else{
+            System.out.println("empty stack!");
+        }
+        return response;
     }
     @Override
     public void traverse(){
-        Node temp=head;
+        Node temp=top;
         while(temp!=null){
             System.out.print(temp.getData()+"-->");
             temp=temp.getNext();

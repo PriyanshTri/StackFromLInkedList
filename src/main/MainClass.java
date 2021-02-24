@@ -19,7 +19,7 @@ public class MainClass extends MyStackImplimentation {
         stk.traverse();
         System.out.println(stk.isEmpty());//false
         System.out.println(stk.size()); //4
-        stk.push(50);   
+        stk.push(50);
         stk.traverse();
     }
 }
